@@ -1,0 +1,31 @@
+Kamu builder make.fun untuk bounty "Fortune Cookie for an AI Agent" (meja Rama). Bangun entry-nya sampai SELESAI (build + check lokal lolos), lalu LAPORKAN kembali ke aku. JANGAN push, JANGAN submit, JANGAN posting ke X/TikTok/sosial apa pun, JANGAN bayar fee apa pun — repo belum ada (parent yang buat via browser setelah laporanmu).
+
+PERINTAH USER (berdiri): hanya bounty GRATIS; kerjakan bareng Freemodel. Jangan pernah mulai recording/build sebelum opens_at dari site kit — opens sudah lewat (13:31 WIB hari ini), jadi boleh mulai sekarang.
+
+DATA BOUNTY (diverifikasi koordinator via API live 24 Nov ~15:05 WIB):
+- Slug: u-suroso-69-fortune-cookie-for-an-ai-agent-d1506e11
+- Judul: Fortune Cookie for an AI Agent. Sponsor suroso (UNVERIFIED). Hadiah $2 USDC top 10 (juara 1 $0,63, 2 $0,43, 3 $0,30, sampai top 10 $0,02). Fee $0.
+- opensAt: 2026-11-24T06:31:48Z (= 13:31 WIB hari ini — SUDAH LEWAT). Deadline/entries_close: 2026-11-24T18:30:00Z (= 25 Nov 01:30 WIB).
+- Blind round 3 putaran, cutoff R1: 2026-11-24T10:31:12Z (= 17:31 WIB hari ini — TARGET: selesai build sebelum ini agar masuk round 1), R2 21:30 WIB, R3/final 01:30 WIB. submissionCount live 1.405 dan naik cepat.
+- Tugas: SATU baris fortune cookie lucu untuk AI agent, MAKSIMAL 140 karakter, suara fortune slip, lucu + original. Judge model membandingkan entry dua-dua melawan judge brief.
+- Harness: program/v1. Program menulis satu teks ke /output/entry.txt (pola sama seperti entry one-liner sebelumnya).
+- File lokal sudah ada di ~/workspace/makefun/: u-suroso-69-fortune-cookie-for-an-ai-agent-d1506e11-competition.json dan u-suroso-69-fortune-cookie-for-an-ai-agent-d1506e11-requirements.json (baca keduanya; requirements berisi checks, repo_about, readme_template, how_to_submit).
+- Kit tarball: https://make.fun/c/u-suroso-69-fortune-cookie-for-an-ai-agent-d1506e11/kit — download ke ~/workspace/makefun/u-suroso-69-fortune-cookie-for-an-ai-agent-d1506e11-kit.tar.gz, extract ke ~/workspace/makefun/u-suroso-69-fortune-cookie-for-an-ai-agent-d1506e11-kit/ (periksa apakah CLI-nya nested satu level lebih dalam seperti kit Po Pu — cari makefun.mjs dengan find sebelum menjalankan).
+- repo_about (dari requirements live): description template "{summary} Built by an AI agent for make.fun's "Fortune Cookie for an AI Agent" bounty, $2 in USDC.", summary_max 261, homepage https://make.fun/bounty/u-suroso-69-fortune-cookie-for-an-ai-agent-d1506e11, topics makefun/ai-agents/bounties/growth. (Parent yang set About via browser nanti — kamu cukup catat nilainya; hitung panjang deskripsi final dengan python, harus ≤261.)
+
+PROSEDUR (wajib): baca ~/workspace/makefun/makefun-agent-skill.md + https://make.fun/skill.md + https://make.fun/heartbeat.md FRESH sebelum bekerja (live v1.5.279 per 24 Nov), plus requirements JSON di atas. Ikuti skill itu persis: checklist tertulis, build di dalam SATU recording session (session ini — jangan mulai sesi baru di tengah jalan), agent menulis SEMUA file sendiri di dalam sesi ini termasuk README final, jangan salin output model lain mentah-mentah sebagai file jadi.
+
+PELAJARAN STEADY-IBIS (wajib): main.py HARUS ditulis/diedit dalam 2+ pesan (two-pass genuine dengan edit nyata antar-pass) — satu pesan saja GAGAL thinking_revised saat bundle check. V1 dulu, lalu edit nyata jadi v2 dengan alasan di komentar main.py.
+
+FREEMODEL (kolaborasi, model claude-sonnet-5-5): helper ada di ~/workspace/custom-connectors/custom.freemodel/bin/freemodel.py — baca ~/workspace/custom-connectors/custom.freemodel/CONNECTOR.md dulu sebelum memakainya. JANGAN cari FREE_MODEL_KEY di env — key TIDAK ada di VM ini; helper memakai kredensial surrogate dan SUDAH terbukti jalan. Prompt PENDEK (gateway batas ~15,5 detik/request; call bisa gagal RemoteDisconnected — catat dan lanjutkan, jangan blokir build karenanya), satu tugas per call. Freemodel membantu: (a) menilai/menyempurnakan draft kalimat + memberi 2–3 alternatif sesuai kriteria judge, (b) review main.py final vs gate + determinisme. Output Freemodel adalah INPUT draft/review SAJA — kamu tetap menulis SEMUA file sendiri di dalam recording session ini. Kalau helper gagal, catat dan lanjutkan dengan penilaianmu sendiri. Experiential Labs TIDAK dipakai (user: "BIARIN DULU").
+
+STRUKTUR BUILD (pola entry one-liner sebelumnya, source dir ~/workspace/makefun/u-po-pu-one-sentence-for-a-traveler-from-1800-7e6162fb/ bisa dibaca sebagai contoh — JANGAN salin isinya, hanya polanya):
+- Source dir baru: ~/workspace/makefun/u-suroso-69-fortune-cookie-for-an-ai-agent-d1506e11/
+- main.py (stdlib saja, tanpa network/secret): konstanta ENTRY satu baris ≤140 karakter, tulis ke $MAKEFUN_OUTPUT_DIR/entry.txt (default /output). Uji determinisme: jalankan 2×, output byte-identik.
+- LICENSE (MIT, Copyright (c) 2026 lycann666).
+- README.md dari readme_template kit (3 badges, repo lycann666/<nama-repo> — nama repo: fortune-cookie-for-an-ai-agent; ref 5f3j6jyb bila template memakainya).
+- .makefun/owner.json berisi {"wallet":"GkjG2osAv75kBkH7he6NeR2v19Dah1mCG9GAxtpYEKvn"} (wallet sama seperti entry sebelumnya).
+- Prompt file: salinan brief tugas ini sebagai .txt di source dir.
+- Commit lokal dengan git (pesan jelas). JANGAN push — repo belum ada.
+- Kit check lokal (node cli/makefun.mjs check --kit . --repo <dir>) sampai hanya FAIL transcripts_present (wajar — belum ada bundle) dan 5 at-submission; bundle --dry-run exit 0. Catat hasil check + dry-run.
+- Catatan jujur: field ~1.405 entry dan naik cepat; hadiah total $2; peluang kecil — sampaikan apa adanya di laporan.
